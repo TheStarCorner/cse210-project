@@ -8,8 +8,13 @@ Bullets from tanks possibly vary in size when shot. Random size each time its sh
 
 ## CLASSES FOR ALPHA PHASE: 
 
-# Tank(arcade.Sprite)
+# TitleScreen
 
+# InstructionScreen
+
+# GameOverScreen
+
+# Tank(arcade.Sprite)
 
 
 # Bullet(arcade.Sprite)
