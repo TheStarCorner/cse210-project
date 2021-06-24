@@ -9,3 +9,9 @@ class Tank(arcade.Sprite):
 
         self.center_x = int(constants.MAX_X / 2)
         self.center_y = int(constants.TANK_Y)
+        
+    def bounce_horizontal(self):
+        self.change_y *= -1
+
+    def bounce_vertical(self):
+        self.change_x *= -1
