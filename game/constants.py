@@ -10,5 +10,5 @@ TANK_MOVE_SCALE = 10
 
 
 BULLET_IMAGE = ""
-TANK1_IMAGE = ""
+TANKRED_IMAGE = "images/redtank.png"
 TANK2_IMAGE = ""
