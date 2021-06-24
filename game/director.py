@@ -1,108 +1,38 @@
+import arcade
 from game import constants
-from game.score import Score
 
-class Director:
-    """A code template for a person who directs the game. The responsibility of 
-    this class of objects is to control the sequence of play.
-    
-    Stereotype:
-        Controller
-
-    Attributes:
-        input_service (InputService): The input mechanism.
-        keep_playing (boolean): Whether or not the game can continue.
-        output_service (OutputService): The output mechanism.
-        score (Score): The current score.
-    """
-
-    def __init__(self, input_service, output_service):
-        """The class constructor.
-        
-        Args:
-            self (Director): an instance of Director.
+class Director(arcade.Window):
+    def __init__(self, cast, script, input_service):
+        """Initialize the game
         """
+        super().__init__(constants.MAX_X, constants.MAX_Y, "Director")
+
+        self._cast = cast
+        self._script = script
         self._input_service = input_service
-        self._keep_playing = True
-        self._output_service = output_service
-        self._score = Score()
+
+    def setup(self):
+        arcade.set_background_color(arcade.color.BLACK)
+
+    def on_update(self, delta_time):
+        self._cue_action("update")
+
+    def on_draw(self):
+        self._cue_action("output")
+
+    def on_key_press(self, symbol, modifiers):
+        self._input_service.set_key(symbol, modifiers)
+        self._cue_action("input")
+
+    def on_key_release(self, symbol, modifiers):
+        self._input_service.remove_key(symbol, modifiers)
+        self._cue_action("input")
+
+    def _cue_action(self, tag):
+        """Executes the actions with the given tag.
         
-    def start_game(self):
-        """Starts the game loop to control the sequence of play.
-        
         Args:
-            self (Director): an instance of Director.
-        """
-        while self._keep_playing:
-            self._get_inputs()
-            self._do_updates()
-            self._do_outputs()
-
-    def _get_inputs(self):
-        """Gets the inputs at the beginning of play. In this case,
-        that means getting the desired direction and moving the tank.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        direction = self._input_service.get_direction()
-        self._tank.move_head(direction)
-
-    def _do_updates(self):
-        """Updates the important game information for each round of play. In 
-        this case, that means checking the following colisions:
-        # Tank_wall
-        # Tank_Tank
-        # Bullet_Bullet
-        # Bullet_Wall
-        # Bullet_Tank
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        self._handle_tank_wall_collision()
-        self._handle_tank_tank_collision()
-        #self._handle_bullet_bullet_collision()
-        #self._handle_bullet_wall_collision()
-        #self._handle_bullet_tank_collision()
-        
-    def _do_outputs(self):
-        """Outputs game info each round of play. Checking if there are 
-        tank that survived and declaring the winner.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        self._output_service.clear_screen()
-        self._output_service.draw_actor(self._tank)
-        self._output_service.draw_actors(self._tank.get_all())
-        self._output_service.draw_actor(self._score)
-        self._output_service.flush_buffer()
-
-    def _handle_tank_wall_collision(self):
-        """Handles collisions between the tank and the wall. Stops the game 
-        if there is one. (???????????)
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        tank = self._tank.get_wall()
-        for tank in wall:
-            if tank.get_position().equals(wall.get_position()):
-                self._keep_playing = False
-                break
-
-    def _handle_tank_tank2_collision(self):
-        """Handles collisions between the tank and the tank2. Stops the game 
-        if there is one colision
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        tank = self._tank.get_tank2()
-        for tank in tank2:
-            if tank.get_position().equals(tank2.get_position()):
-                self._keep_playing = False
-                break        
-
-    #note 1
-    
+            tag (string): The given tag.
+        """ 
+        for action in self._script[tag]:
+            action.execute(self._cast)
