@@ -20,7 +20,7 @@ class HandleCollisionsAction(Action):
 
 
         for bullet in cast["bullets"]:
-            self._bullet_wall(bullet)
+            self._bullet_wall(bullet, cast)
             self._bullet_tank(bullet, tank1, tank2)
         
         self._bullet_bullet(cast)
@@ -28,8 +28,14 @@ class HandleCollisionsAction(Action):
         self._tank_wall(tank2)
         self._tank_tank(tank1, tank2)
 
-    def _bullet_wall(self, bullet):
-        return None
+    def _bullet_wall(self, bullet, cast):
+        for wall in cast["walls"]:
+            if bullet.collides_with_sprite(wall):
+                bullet.bounce_vertical()
+                # if (bullet.get_bounces() == 0):
+                #     cast["bullets"].remove(bullet)
+        
+        
 
     def _bullet_tank(self, bullet, tank1, tank2):
         return None

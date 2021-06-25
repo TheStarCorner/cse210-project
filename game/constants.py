@@ -3,16 +3,12 @@ import os
 MAX_X = 800
 MAX_Y = 600
 
-TANK_SPEED = 2
-BULLET_Y = MAX_Y / 2
-
-TANK_MOVE_SCALE = 10
+TANK_MOVE_SCALE = 3
+BULLET_MOVE_SCALE = 4
 
 
-BULLET_IMAGE = ""
-TANKRED_IMAGE = "images/redtank.png"
-TANK2_IMAGE = ""
-=======
-TANK1_IMAGE = "images/Blue Box.png"
-TANK2_IMAGE = "images/Red Box.png"
+BULLET_IMAGE = "images/bullet.png"
 
+TANK1_IMAGE = "images/bluetank.png"
+TANK2_IMAGE = "images/redtank.png"
+WALL_IMAGE = "images/wall.png"

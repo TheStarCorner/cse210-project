@@ -33,8 +33,12 @@ class DrawActorsAction(Action):
         for bullet in bullets:
             self._output_service.draw_actor(bullet)
 
-        tank = cast["tank"][1] 
-        # Not sure if this will actually work for the tanks
-        self._output_service.draw_actor(tank)
+        tanks = cast["tanks"] 
+        for tank in tanks:
+            self._output_service.draw_actor(tank)
+
+        walls = cast["walls"]
+        for wall in walls:
+            self._output_service.draw_actor(wall)
 
         self._output_service.flush_buffer()
