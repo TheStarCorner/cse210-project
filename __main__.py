@@ -12,7 +12,7 @@ from game.tank import Tank
 from game.wall import Wall
 from game.bullet import Bullet
 
-from game.director import director
+from game.director import Director
 import arcade
 
 def main():
@@ -20,23 +20,23 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    tank1 = Tank()
-    tank2 = Tank()
+    tank1 = Tank(constants.TANK1_IMAGE)
+    tank2 = Tank(constants.TANK2_IMAGE)
     cast["tanks"] = [tank1, tank2]
 
     cast["bullets"] = []
 
     cast["walls"] = []
-    for x in range(constants.SCREEN_WIDTH):
-        for y in range(constants.SCREEN_HEIGHT):
+    for x in range(constants.MAX_X):
+        for y in range(constants.MAX_Y):
             if x == 0:
-               cast["walls"].append(Wall())
-            if x == constants.SCREEN_WIDTH:
-                cast["walls"].append(Wall())
+               cast["walls"].append(Wall(x, y))
+            if x == constants.MAX_X - 1:
+                cast["walls"].append(Wall(x, y))
             if y == 0:
-               cast["walls"].append(Wall())
-            if y == constants.SCREEN_HEIGHT:
-                cast["walls"].append(Wall())
+               cast["walls"].append(Wall(x, y))
+            if y == constants.MAX_Y - 1:
+                cast["walls"].append(Wall(x, y))
 
             
     
