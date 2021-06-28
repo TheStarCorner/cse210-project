@@ -31,9 +31,15 @@ class HandleCollisionsAction(Action):
     def _bullet_wall(self, bullet, cast):
         for wall in cast["walls"]:
             if bullet.collides_with_sprite(wall):
+                bullet.bounces += 1
                 bullet.bounce_vertical()
-                # if (bullet.get_bounces() == 0):
-                #     cast["bullets"].remove(bullet)
+                if (bullet.should_disappear()):
+                    if bullet.which_tank == 1:
+                        cast["tanks"][0].num_bullets -= 1
+                    else:
+                        cast["tanks"][1].num_bullets -= 1
+                    cast["bullets"].remove(bullet)
+                    break
         
         
 
