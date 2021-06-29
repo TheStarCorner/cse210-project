@@ -6,7 +6,7 @@ from random import randint
 import arcade
 
 class Bullet(arcade.Sprite):
-    def __init__(self, location, velocity):
+    def __init__(self, location, velocity, which_tank):
 
         super().__init__(constants.BULLET_IMAGE)
         self.center_x = location.get_x()
@@ -14,16 +14,14 @@ class Bullet(arcade.Sprite):
 
         self.change_x = velocity.get_x()
         self.change_y = velocity.get_y()
-        self._bounces = 3
+        self.bounces = 0
+        self.which_tank = which_tank
         
     def bounce_horizontal(self):
         self.change_x *= -1
-        self._bounces -= 1
 
     def bounce_vertical(self):
         self.change_y *= -1
-        self._bounces -= 1
-
-    def get_bounces(self):
-        return self._bounces
-
+    
+    def should_disappear(self):
+        return self.bounces > 2

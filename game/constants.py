@@ -3,8 +3,8 @@ import os
 MAX_X = 800
 MAX_Y = 600
 
-TANK_MOVE_SCALE = 3
-BULLET_MOVE_SCALE = 4
+TANK_MOVE_SCALE = 5
+BULLET_MOVE_SCALE = 2
 
 
 BULLET_IMAGE = "images/bullet.png"
