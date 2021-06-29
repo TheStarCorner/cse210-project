@@ -19,11 +19,9 @@ class Bullet(arcade.Sprite):
         
     def bounce_horizontal(self):
         self.change_x *= -1
-        self.bounces += 1
 
     def bounce_vertical(self):
         self.change_y *= -1
-        self.bounces += 1
     
     def should_disappear(self):
-        return self.bounces > 100
+        return self.bounces > 2

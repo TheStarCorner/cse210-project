@@ -30,13 +30,13 @@ def main():
     for x in range(constants.MAX_X):
         for y in range(constants.MAX_Y):
             if x == 0:
-               cast["walls"].append(Wall(x, y))
+               cast["walls"].append(Wall(x, y,"vertical"))
             if x == constants.MAX_X - 1:
-                cast["walls"].append(Wall(x, y))
+                cast["walls"].append(Wall(x, y, "vertical"))
             if y == 0:
-               cast["walls"].append(Wall(x, y))
+               cast["walls"].append(Wall(x, y, "horizontal"))
             if y == constants.MAX_Y - 1:
-                cast["walls"].append(Wall(x, y))
+                cast["walls"].append(Wall(x, y, "horizontal"))
 
             
     
