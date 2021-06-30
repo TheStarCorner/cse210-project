@@ -46,12 +46,12 @@ class ControlActorsAction(Action):
 
         if self._input_service.is_player1_shooting() and tank1.can_shoot():
             bullet_velocity = tank1.get_shooting_velocity().scale(constants.BULLET_MOVE_SCALE)
-            bullet_location = Point(tank1.center_x, tank1.center_y)
+            bullet_location = Point(tank1.center_x + bullet_velocity.get_x() * 2, tank1.center_y + bullet_velocity.get_y() * 2)
             cast["bullets"].append(Bullet(bullet_location, bullet_velocity, 1))
             tank1.num_bullets += 1
 
         if self._input_service.is_player2_shooting() and tank2.can_shoot():
             bullet_velocity = tank2.get_shooting_velocity().scale(constants.BULLET_MOVE_SCALE)
-            bullet_location = Point(tank2.center_x, tank2.center_y)
+            bullet_location = Point(tank2.center_x + bullet_velocity.get_x() * 2, tank2.center_y + bullet_velocity.get_y() * 2)
             cast["bullets"].append(Bullet(bullet_location, bullet_velocity, 2))
             tank2.num_bullets += 1
