@@ -17,7 +17,7 @@ import arcade
 
 def main():
 
-    # create the cast {key: tag, value: list}
+    # create the cast - {key: tag, value: list} 
     cast = {}
 
     tank1 = Tank(constants.TANK1_IMAGE)
