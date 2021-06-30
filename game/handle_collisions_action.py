@@ -21,7 +21,7 @@ class HandleCollisionsAction(Action):
 
         for bullet in cast["bullets"]:
             self._bullet_wall(bullet, cast)
-            self._bullet_tank(bullet, tank1, tank2)
+            self._bullet_tank(bullet, tank1, tank2, cast)
         
         self._bullet_bullet(cast)
         self._tank_wall(tank1)
@@ -34,15 +34,15 @@ class HandleCollisionsAction(Action):
                 bullet.bounces += 1
                 if wall.orientation == "vertical":
                     bullet.bounce_horizontal()
-                    self.check_should_bullet_disappear(bullet, cast)
+                    self._check_should_bullet_disappear(bullet, cast)
                     break
                 if wall.orientation == "horizontal":
                     bullet.bounce_vertical()
-                    self.check_should_bullet_disappear(bullet, cast)
+                    self._check_should_bullet_disappear(bullet, cast)
                     break
                 
         
-    def check_should_bullet_disappear(self, bullet, cast):
+    def _check_should_bullet_disappear(self, bullet, cast):
         if (bullet.should_disappear()):
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
@@ -50,8 +50,24 @@ class HandleCollisionsAction(Action):
                 cast["tanks"][1].num_bullets -= 1
             cast["bullets"].remove(bullet)
 
-    def _bullet_tank(self, bullet, tank1, tank2):
-        return None
+    def _bullet_tank(self, bullet, tank1, tank2, cast):
+        if bullet.collides_with_sprite(tank1):
+            if bullet.which_tank == 1:
+                cast["tanks"][0].num_bullets -= 1
+            else:
+                cast["tanks"][1].num_bullets -= 1
+            cast["bullets"].remove(bullet)
+            # tank1.lose_life()
+        if bullet.collides_with_sprite(tank2):
+            # tank1.lose_life()
+            if bullet.which_tank == 1:
+                cast["tanks"][0].num_bullets -= 1
+            else:
+                cast["tanks"][1].num_bullets -= 1
+            cast["bullets"].remove(bullet)
+
+        
+    
 
     def _bullet_bullet(self, bullets):
         return None
