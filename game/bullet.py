@@ -25,3 +25,11 @@ class Bullet(arcade.Sprite):
     
     def should_disappear(self):
         return self.bounces > 2
+
+    def is_different_bullet(self, bullet):
+        a = False
+        if not self.center_x == bullet.center_x:
+            a = True
+        if not self.center_y == bullet.center_y:
+            a = True
+        return a
