@@ -13,6 +13,7 @@ class Tank(arcade.Sprite):
 
         self._shooting_velocity = Point(0, 0)
         self.num_bullets = 0
+        self.lives = constants.NUM_TANK_LIVES
         
     def bounce_horizontal(self):
         self.change_y *= -1
@@ -28,3 +29,6 @@ class Tank(arcade.Sprite):
 
     def can_shoot(self):
         return self.num_bullets < 5
+
+    def lose_life(self):
+        self.lives -=1

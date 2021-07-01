@@ -73,7 +73,7 @@ class ArcadeInputService:
         return velocity
             
     def is_player1_shooting(self):
-        return arcade.key.C in self._keys
+        return arcade.key.V in self._keys
     
     def is_player2_shooting(self):
         return arcade.key.P in self._keys
