@@ -10,6 +10,7 @@ class Director(arcade.Window):
         self._cast = cast
         self._script = script
         self._input_service = input_service
+        self.set_update_rate(1/100)
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
