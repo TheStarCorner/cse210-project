@@ -28,8 +28,8 @@ def main():
 
     cast["walls"] = []
 
-    map = random.randint(1,2)
-
+    map = random.randint(1,4)
+    
     for x in range(constants.MAX_X):
         for y in range(constants.MAX_Y):
             if x == 0:
@@ -78,6 +78,43 @@ def main():
             if(y % 20 == 0):
                 cast["walls"].append(Wall(400, y, "vertical"))
 
+
+    if map == 3:
+        for y in range(0, constants.MAX_Y):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(200, y, "vertical"))
+        for y in range(0, constants.MAX_Y):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(400, y, "vertical"))
+        for y in range(0, constants.MAX_Y):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(600, y, "vertical"))
+        for x in range(800):
+            if(x % 100 == 0):
+                cast["walls"].append(Wall(x, 300, "horizontal"))
+            
+    if map == 4:
+        for y in range(0,200):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(600, y, "vertical"))
+        for y in range(150,450):
+            if(y % 1 == 0):
+                cast["walls"].append(Wall(400, y, "vertical"))
+        for y in range(400,600):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(200, y, "vertical"))
+        for y in range(400,600):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(600, y, "vertical"))
+        for y in range(0,200):
+            if(y % 60 == 0):
+                cast["walls"].append(Wall(200, y, "vertical"))
+        for x in range(100,300):
+            if(x % 1 == 0):
+                cast["walls"].append(Wall(x, 300, "horizontal"))
+        for x in range(500,700):
+            if(x % 1 == 0):
+                cast["walls"].append(Wall(x, 300, "horizontal"))            
 
     # create the script {key: tag, value: list}
     script = {}
