@@ -98,7 +98,7 @@ def main():
             if(y % 60 == 0):
                 cast["walls"].append(Wall(600, y, "vertical"))
         for y in range(150,450):
-            if(y % 1 == 0):
+            if(y % 20 == 0):
                 cast["walls"].append(Wall(400, y, "vertical"))
         for y in range(400,600):
             if(y % 60 == 0):
@@ -110,10 +110,10 @@ def main():
             if(y % 60 == 0):
                 cast["walls"].append(Wall(200, y, "vertical"))
         for x in range(100,300):
-            if(x % 1 == 0):
+            if(x % 20 == 0):
                 cast["walls"].append(Wall(x, 300, "horizontal"))
         for x in range(500,700):
-            if(x % 1 == 0):
+            if(x % 20 == 0):
                 cast["walls"].append(Wall(x, 300, "horizontal"))            
 
     # create the script {key: tag, value: list}
