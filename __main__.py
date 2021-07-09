@@ -11,6 +11,7 @@ from game.arcade_output_service import ArcadeOutputService
 from game.tank import Tank
 from game.wall import Wall
 from game.bullet import Bullet
+from game.score import Score
 
 from game.director import Director
 import arcade
@@ -24,9 +25,14 @@ def main():
     tank2 = Tank(constants.TANK2_IMAGE)
     cast["tanks"] = [tank1, tank2]
 
+    score1 = Score()
+    cast["score"] = [score1]
+
     cast["bullets"] = []
 
     cast["walls"] = []
+
+
 
     map = random.randint(1,4)
     

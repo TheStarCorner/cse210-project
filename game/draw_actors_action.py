@@ -41,4 +41,8 @@ class DrawActorsAction(Action):
         for wall in walls:
             self._output_service.draw_actor(wall)
 
+        score = cast["score"]
+        for score in score:
+            self._output_service.draw_actor(score)    
+
         self._output_service.flush_buffer()

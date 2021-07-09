@@ -54,18 +54,23 @@ class HandleCollisionsAction(Action):
         if bullet.collides_with_sprite(tank1):
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
+                cast["score"][0].add_score_tank1()
             else:
                 cast["tanks"][1].num_bullets -= 1
+                cast["score"][0].add_score_tank2()
             cast["bullets"].remove(bullet)
             tank1.lose_life()
+            
         if bullet.collides_with_sprite(tank2):
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
+                cast["score"][0].add_score_tank1()
             else:
                 cast["tanks"][1].num_bullets -= 1
+                cast["score"][0].add_score_tank2()
             cast["bullets"].remove(bullet)
             tank2.lose_life()
-        
+            
     
 
     def _bullet_bullet(self, cast):
