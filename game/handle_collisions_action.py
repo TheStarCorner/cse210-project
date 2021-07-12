@@ -93,9 +93,27 @@ class HandleCollisionsAction(Action):
         for wall in cast["walls"]:
             if tank.collides_with_sprite(wall):
                 if wall.orientation == "vertical":
-                    tank.change_x = 0
+                    if abs(tank.center_x - wall.center_x) < 20:
+                        if tank.center_y < wall.center_y:
+                            tank.center_y = wall.center_y - 25
+                        else:
+                            tank.center_y = wall.center_y + 25
+                    else:
+                        if tank.center_x < wall.center_x:
+                            tank.center_x = wall.center_x - 25
+                        else:
+                            tank.center_x = wall.center_x + 25
                 else:
-                    tank.change_y = 0
+                    if abs(tank.center_y - wall.center_y) < 15:
+                        if tank.center_x < wall.center_x:
+                            tank.center_x = wall.center_x - 25
+                        else:
+                            tank.center_x = wall.center_x + 25
+                    else:
+                        if tank.center_y < wall.center_y:
+                            tank.center_y = wall.center_y - 25
+                        else:
+                            tank.center_y = wall.center_y + 25
 
     def _tank_tank(self, tank1, tank2):
         return None
