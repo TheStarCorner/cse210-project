@@ -23,6 +23,7 @@ def main():
 
     tank1 = Tank(constants.TANK1_IMAGE)
     tank2 = Tank(constants.TANK2_IMAGE)
+
     cast["tanks"] = [tank1, tank2]
 
     score1 = Score()

@@ -11,14 +11,17 @@ class Director(arcade.Window):
         self._script = script
         self._input_service = input_service
         self.set_update_rate(1/100)
+        self.background = None
 
     def setup(self):
-        arcade.set_background_color(arcade.color.BLACK)
+        self.background = arcade.load_texture(constants.BACKGROUND_IMAGE)
 
     def on_update(self, delta_time):
         self._cue_action("update")
 
     def on_draw(self):
+        arcade.start_render()
+        arcade.draw_texture_rectangle(constants.MAX_X // 2, constants.MAX_Y // 2, constants.MAX_X, constants.MAX_Y, self.background)
         self._cue_action("output")
 
     def on_key_press(self, symbol, modifiers):
