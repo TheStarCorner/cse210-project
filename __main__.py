@@ -12,11 +12,22 @@ from game.tank import Tank
 from game.wall import Wall
 from game.bullet import Bullet
 from game.score import Score
+from game.menuview import MenuView
 
 from game.director import Director
 import arcade
 
 def main():
+    #If you take these comments off it will run the title screen
+    # and the instruction page. But it cant get the game to play yet
+    # It needs more work. -Ammon Nelson
+
+    # window = arcade.Window(constants.MAX_X, constants.MAX_Y, "Tanks!")
+    # window.total_score = 0
+    # menu_view = MenuView()
+    # window.show_view(menu_view)
+    # arcade.run()
+
 
     # create the cast - {key: tag, value: list} 
     cast = {}
