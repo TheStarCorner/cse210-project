@@ -57,13 +57,14 @@ class Director(arcade.View):
                 if x == constants.MAX_X - 1:
                     if(y % 20 == 0):
                         cast["walls"].append(Wall(x, y, "vertical"))
+                    
                 if y == 0:
                     if(x % 20 == 0):
                         cast["walls"].append(Wall(x, y, "horizontal"))
                 if y == constants.MAX_Y - 1:
                     if(x % 20 == 0):
                         cast["walls"].append(Wall(x, y, "horizontal"))
-        
+        cast["walls"].append(Wall(constants.MAX_X, constants.MAX_Y, "horizontal"))
         if map == 1:
             for x in range(400):
                 if(x % 20 == 0):
