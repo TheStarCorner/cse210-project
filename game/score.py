@@ -2,8 +2,8 @@ import arcade
 
 class Score():
     def __init__(self):
-        self.score_tank1_count = 10
-        self.score_tank2_count = 10
+        self.score_tank1_count = 5
+        self.score_tank2_count = 5
         self.change_x = 0
         self.change_y = 0
 
