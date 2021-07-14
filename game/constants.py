@@ -32,3 +32,7 @@ WALL_IMAGE = "images/wall.png"
 NUM_TANK_LIVES = 5
 
 BACKGROUND_IMAGE = "images/BOARD IMG.png"
+
+SHOT_SOUND = "sounds/shot.m4a"
+BOUNCE_SOUND = "sounds/bounce.m4a"
+HIT_SOUND = "sounds/hit.m4a"

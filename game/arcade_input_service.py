@@ -1,6 +1,6 @@
 import sys
 from game.point import Point
-
+import game.constants as constants
 import arcade
 
 class ArcadeInputService:
@@ -73,7 +73,13 @@ class ArcadeInputService:
         return velocity
             
     def is_player1_shooting(self):
-        return arcade.key.V in self._keys
+        if arcade.key.V in self._keys:
+            arcade.sound.play_sound(arcade.sound.load_sound(constants.SHOT_SOUND))
+            return True
+        return False
     
     def is_player2_shooting(self):
-        return arcade.key.P in self._keys
+        if arcade.key.P in self._keys:
+            arcade.sound.play_sound(arcade.sound.load_sound(constants.SHOT_SOUND))
+            return True
+        return False

@@ -1,6 +1,7 @@
 import random
 from game import constants
 from game.action import Action
+import arcade
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -31,6 +32,7 @@ class HandleCollisionsAction(Action):
     def _bullet_wall(self, bullet, cast):
         for wall in cast["walls"]:
             if bullet.collides_with_sprite(wall):
+                arcade.sound.play_sound(arcade.sound.load_sound(constants.BOUNCE_SOUND))
                 bullet.bounces += 1
                 if wall.orientation == "vertical":
                     bullet.bounce_horizontal()
@@ -52,6 +54,7 @@ class HandleCollisionsAction(Action):
 
     def _bullet_tank(self, bullet, tank1, tank2, cast):
         if bullet.collides_with_sprite(tank1):
+            arcade.sound.play_sound(arcade.sound.load_sound(constants.HIT_SOUND))
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
                 cast["score"][0].subtract_score_tank1()
@@ -65,6 +68,7 @@ class HandleCollisionsAction(Action):
             tank1.lose_life()
             
         if bullet.collides_with_sprite(tank2):
+            arcade.sound.play_sound(arcade.sound.load_sound(constants.HIT_SOUND))
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
                 cast["score"][0].add_score_tank1()
