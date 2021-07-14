@@ -84,6 +84,8 @@ class Director(arcade.View):
             for x in range(450, 600):
                 if(x % 20 == 0):
                     cast["walls"].append(Wall(x, 450, "horizontal"))
+            tank1.set_position(100, 500)
+            tank2.set_position(700, 500)
                 
         if map == 2:
             for y in range(0, 300):
@@ -95,6 +97,8 @@ class Director(arcade.View):
             for y in range(300, constants.MAX_Y):
                 if(y % 20 == 0):
                     cast["walls"].append(Wall(400, y, "vertical"))
+            tank1.set_position(100, 100)
+            tank2.set_position(700, 100)
 
 
         if map == 3:
@@ -110,6 +114,8 @@ class Director(arcade.View):
             for x in range(800):
                 if(x % 100 == 0):
                     cast["walls"].append(Wall(x, 300, "horizontal"))
+            tank1.set_position(100, 100)
+            tank2.set_position(700, 500)
                 
         if map == 4:
             for y in range(0,200):
@@ -132,7 +138,9 @@ class Director(arcade.View):
                     cast["walls"].append(Wall(x, 300, "horizontal"))
             for x in range(500,700):
                 if(x % 20 == 0):
-                    cast["walls"].append(Wall(x, 300, "horizontal"))            
+                    cast["walls"].append(Wall(x, 300, "horizontal"))
+            tank1.set_position(100, 500)
+            tank2.set_position(700, 100)       
 
         # create the script {key: tag, value: list}
         script = {}
