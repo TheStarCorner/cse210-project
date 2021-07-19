@@ -29,6 +29,8 @@ class DrawActorsAction(Action):
         """
         self._output_service.clear_screen()
 
+        self._output_service.draw_actor(cast["background"][0])
+        
         bullets = cast["bullets"]
         for bullet in bullets:
             self._output_service.draw_actor(bullet)
@@ -48,5 +50,7 @@ class DrawActorsAction(Action):
         explosions = cast["explosions"]
         for explosion in explosions:
             self._output_service.draw_actor(explosion)
+
+        
 
         self._output_service.flush_buffer()

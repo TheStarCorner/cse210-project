@@ -2,7 +2,7 @@ import arcade
 import random
 from game import constants
 from game.gameover import GameOverView
-
+from game.background import Background
 from game import constants
 from game.point import Point
 from game.control_actors_action import ControlActorsAction
@@ -45,6 +45,8 @@ class Director(arcade.View):
         cast["walls"] = []
 
         cast["explosions"] = []
+
+        cast["background"] = [Background()]
 
 
         map = random.randint(1,4)
