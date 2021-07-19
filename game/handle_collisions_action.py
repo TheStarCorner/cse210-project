@@ -1,7 +1,9 @@
 import random
 from game import constants
 from game.action import Action
+from game.point import Point
 import arcade
+from game.sprite2 import Sprite2
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -19,6 +21,7 @@ class HandleCollisionsAction(Action):
         tank1 = cast["tanks"][0]
         tank2 = cast["tanks"][1]
 
+        self._delete_explosions(cast)
 
         for bullet in cast["bullets"]:
             self._bullet_wall(bullet, cast)
@@ -54,6 +57,7 @@ class HandleCollisionsAction(Action):
 
     def _bullet_tank(self, bullet, tank1, tank2, cast):
         if bullet.collides_with_sprite(tank1):
+            self._add_explosion(Point(tank1.center_x, tank1.center_y), cast)
             arcade.sound.play_sound(arcade.sound.load_sound(constants.HIT_SOUND))
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
@@ -68,6 +72,7 @@ class HandleCollisionsAction(Action):
             tank1.lose_life()
             
         if bullet.collides_with_sprite(tank2):
+            self._add_explosion(Point(tank2.center_x, tank2.center_y), cast)
             arcade.sound.play_sound(arcade.sound.load_sound(constants.HIT_SOUND))
             if bullet.which_tank == 1:
                 cast["tanks"][0].num_bullets -= 1
@@ -127,3 +132,14 @@ class HandleCollisionsAction(Action):
     def _tank_tank(self, tank1, tank2):
         return None
         #change
+
+    def _add_explosion(self, position, cast):
+        cast["explosions"].append(Sprite2())
+        cast["explosions"][-1].center_x = position.get_x()
+        cast["explosions"][-1].center_y = position.get_y()
+
+    def _delete_explosions(self, cast):
+        for explosion in cast["explosions"]:
+            explosion.increment()
+            if explosion.counter == 10:
+                cast["explosions"].remove(explosion)

@@ -27,6 +27,8 @@ TANK2_RIGHT = "images/RED_RIGHT.png"
 TANK2_UP_LEFT = "images/RED_UP_LEFT.png"
 TANK2_UP_RIGHT = "images/RED_UP_RIGHT.png"
 
+EXPLOSION_IMAGE = "images/EXPLOSION.png"
+
 WALL_IMAGE = "images/wall.png"
 
 NUM_TANK_LIVES = 5
