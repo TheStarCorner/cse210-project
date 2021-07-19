@@ -43,6 +43,10 @@ class DrawActorsAction(Action):
 
         score = cast["score"]
         for score in score:
-            self._output_service.draw_actor(score)    
+            self._output_service.draw_actor(score)
+
+        explosions = cast["explosions"]
+        for explosion in explosions:
+            self._output_service.draw_actor(explosion)
 
         self._output_service.flush_buffer()

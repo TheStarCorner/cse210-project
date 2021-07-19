@@ -44,6 +44,7 @@ class Director(arcade.View):
 
         cast["walls"] = []
 
+        cast["explosions"] = []
 
 
         map = random.randint(1,4)
